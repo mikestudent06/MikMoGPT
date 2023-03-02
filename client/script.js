@@ -95,8 +95,8 @@ const handleSubmit = async (e) => {
         },0);
      
         //Now we fetch the data from the server which is gonna be the bot's response:
-        const response = await fetch('http://localhost:5000', {
-            method: 'POST',
+        const response = await fetch(/*'http://localhost:5000'*/'https://mikmogpt-app-folb.onrender.com' , {
+             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
