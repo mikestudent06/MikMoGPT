@@ -14,11 +14,11 @@ dotenv.config();
 //This line above loads environment variables from a .env file located in the root directory of the project.
 
 // Creating a new OpenAI configuration object with API key from environment variables
-const openAiKey = "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";
+const openAiKey = "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";
 const configuration = new Configuration({
-  apiKey: openAiKey,
+  apiKey: process.env.OPENAI_API_KEY,
 });
-console.log(openAiKey);
+console.log( process.env.OPENAI_API_KEY);
 // Creating a new OpenAI API object with the provided configuration
 const openai = new OpenAIApi(configuration);
 
@@ -49,13 +49,13 @@ app.post('/', async (req, res) => {
 
     // Sending the prompt to the OpenAI API and awaiting the response
     const response = await openai.createCompletion({
-      model: "text-davinci-003", // Specifying the language model to use
-      prompt: `${prompt}`, // The input prompt to generate text from, in this case our textarea input
-      temperature: 0, // Higher values means the model will take more risks.
-      max_tokens: 3000, // The maximum number of tokens to generate in the completion.
-      top_p: 1, // alternative to sampling with temperature, called nucleus sampling
-      frequency_penalty: 0.5, // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim. In other words, this is going to forbid the bpt from generating similar sentences 
-      presence_penalty: 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
+      model: "text-davinci-003",
+      prompt: `${prompt}`,
+      temperature: 0.7,
+      max_tokens: 64,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0,
     });
 
     // Extracting the generated text from the response and sending it back as the bot's response
