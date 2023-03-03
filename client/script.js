@@ -1,10 +1,13 @@
 import bot from './assets/bot.svg'
 import user from './assets/user.svg'
+// import { env } from '../server'
+
+// console.log(env);
 
 const form = document.querySelector('form')
 const chatContainer = document.querySelector('#chat_container')
 
-let loadInterval
+let loadInterval;
 
 function loader(element) {
     element.textContent = ''
